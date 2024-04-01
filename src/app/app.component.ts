@@ -37,7 +37,7 @@ export class AppComponent implements AfterViewInit {
   sanitizer = inject(DomSanitizer);
 
   constructor() {
-    this.generateSlides(Math.floor(Math.random() * 10));
+    this.generateSlides(Math.floor(Math.random() * 10) + 1);
   }
 
   get totalSlides() {
