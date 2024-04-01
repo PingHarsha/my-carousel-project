@@ -1,0 +1,36 @@
+<div
+  class="flex flex-col justify-center items-stretch w-full h-full p-8 gap-1.5">
+  <div class="w-full h-1/2 relative flex flex-row items-stretch justify-center">
+    <div class="w-1/2 relative">
+      <div
+        #myDiv
+        class="absolute w-full h-full flex flex-row flex-nowrap gap-6 overflow-hidden">
+        @for (slide of slides; track slide; let index = $index) {
+          <div
+            id="{{ index }}-slide"
+            class="h-full rounded-lg relative"
+            [class]="totalSlides < 3 ? 'w-full shrink-0' : 'min-w-[33vw]'">
+            @if (slide.isVideo) {
+              <iframe
+                [title]="slide.index"
+                [src]="slide.video"
+                class="w-full h-full rounded-lg"></iframe>
+            } @else {
+              <img
+                ngSrc="{{ slide.slideText }}"
+                alt="random pixels"
+                class="rounded-lg"
+                fill />
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  @if (totalSlides > 1) {
+    <app-slide-actions
+      (buttonEvent)="moveSlider($event)"
+      [currentSlide]="currentSlide"
+      [totalSlides]="totalSlides" />
+  }
+</div>
