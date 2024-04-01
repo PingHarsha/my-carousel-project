@@ -171,7 +171,6 @@ export class AppComponent implements AfterViewInit {
         durationOfScroll
       );
       if (currentTime >= durationOfScroll) {
-        console.log('timer finished', nativeElement.scrollLeft);
         return;
       }
       setTimeout(animateScroll, increment);
